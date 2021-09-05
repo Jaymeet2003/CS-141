@@ -16,7 +16,7 @@ using namespace std;  // so that we don't need to preface every cin and cout wit
 void gladiolus(int inpVal){
     int MAXWIDTH = ((inpVal*2)+3);
     int lineSpace = (MAXWIDTH/2)+2;
-    int numberOfLines,totalNumberOfSpaces,numberOfSpaces,temp;
+    int numberOfLines;
 
     //printing flower
 
