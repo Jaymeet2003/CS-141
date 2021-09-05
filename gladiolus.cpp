@@ -2,6 +2,9 @@
     Program 1: Gladiolus
     UIN: 656971609
     Name: Jaymeet Patel
+    
+    Credits : Deep Prajapati for helping for the end space logic.
+              Kalash Shah for helping for ASCII Problem.
     --------------------------------------------
 */
 
