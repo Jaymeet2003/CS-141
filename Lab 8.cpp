@@ -4,7 +4,6 @@ UIN: 656871609
 System: Windows 10 VS Code
 */
 
-
 #include <iostream>
 
 
@@ -13,300 +12,200 @@ System: Windows 10 VS Code
 
 using namespace std;
 
-
 // MAKE/INSERT THE VACATION CLASS HERE
 
+class Vacation {
 
-class Vacation{
+  string destination;
 
+  int cost;
 
-string destination;
+  public:
 
+    // setters and getters of data members
 
-int cost;
+    void setDestination(string d)
 
+  {
 
-public:
+    destination = d;
 
+  }
 
-// setters and getters of data members
+  void setCost(int c)
 
+  {
 
-void setDestination(string d)
+    cost = c;
 
+  }
 
-{
+  string getDestination()
 
+  {
 
-destination=d;
+    return destination;
 
+  }
 
-}
+  int getCost()
 
+  {
 
-void setCost(int c)
+    return cost;
 
+  }
 
-{
+  // Method to display vacation information
 
+  void displayCost()
 
-cost=c;
+  {
 
+    cout << "Vacation information: " << getDestination() << " with cost: " << getCost() << endl;
 
-}
+  }
 
+  // Default constructor
 
-string getDestination()
+  Vacation()
 
+  {
 
-{
+    destination = "NYC";
 
+    cost = 3;
 
-return destination;
+  }
 
+  // Parameterized constructor
 
-}
+  Vacation(string d, int c)
 
+  {
 
-int getCost()
+    setCost(c);
 
+    setDestination(d);
 
-{
-
-
-return cost;
-
-
-}
-
-
-// Method to display vacation information
-
-
-void displayCost()
-
-
-{
-
-
-cout<<"Vacation information: "<<getDestination()<<" with cost: "<<getCost()<<endl;
-
-
-}
-
-
-// Default constructor
-
-
-Vacation()
-
-
-{
-
-
-destination="NYC";
-
-
-cost=3;
-
-
-}
-
-
-// Parameterized constructor
-
-
-Vacation(string d,int c)
-
-
-{
-
-
-setCost(c);
-
-
-setDestination(d);
-
-
-}
-
+  }
 
 };
 
-
 int main() {
 
+  // DECLARE AN INSTANCE OF VACATION AND CALL IT V1
 
-// DECLARE AN INSTANCE OF VACATION AND CALL IT V1
+  Vacation v1;
 
+  string destination; // Vacation destination as a single-word
 
-Vacation v1;
+  int cost; // Vacation cost, used for user input
 
+  // Taking in the destination and cost parameters
 
-string destination; // Vacation destination as a single-word
+  cout << "Enter vacation destination and cost: ";
 
+  cin >> destination >> cost;
 
-int cost; // Vacation cost, used for user input
+  // SET THE DESTINATION AND COST PARAMETERS HERE
 
+  v1.setDestination(destination);
 
-// Taking in the destination and cost parameters
+  v1.setCost(cost);
 
+  // UPDATE THE VARIABLE "theDestination" to equal the actual destination of v1
 
-cout << "Enter vacation destination and cost: ";
+  string theDestination;
 
+  theDestination = v1.getDestination();
 
-cin >> destination >> cost;
+  cout << "The vacation is in " << theDestination << "." << endl;
 
+  // Uncomment these lines only when implementing Stage 2
 
-// SET THE DESTINATION AND COST PARAMETERS HERE
+  // Use v1 to call the display() function, which displays destination and cost,
 
+  //v1.displayCost();
 
-v1.setDestination(destination);
+  // as shown in the sample output below
 
+  // Enter either 2 or 3 to check those test cases -1 to check neither
 
-v1.setCost(cost);
+  // To check the default constructor please enter 3 for the qualified enter 4
 
+  int testCaseCheck;
 
-// UPDATE THE VARIABLE "theDestination" to equal the actual destination of v1
+  cout << "Please enter test case number: ";
 
+  cin >> testCaseCheck;
 
-string theDestination;
+  switch (testCaseCheck) {
 
+  case 2: {
 
-theDestination=v1.getDestination();
+    // UNCOMMENT THE CODE BELOW WHEN YOU START PART 2
 
+    v1.displayCost();
 
-cout << "The vacation is in " << theDestination << "." << endl;
+    break;
 
+  }
 
-// Uncomment these lines only when implementing Stage 2
+  case 3: {
 
+    cout << "Second General Vacation: " << endl;
 
-// Use v1 to call the display() function, which displays destination and cost,
+    Vacation v2;
 
+    // AFTER MAKING YOUR DEFAULT CONSTRUCTOR INITIALIZE A DEFAULT VACATION
 
-//v1.displayCost();
+    // NAME THIS VACATION v2 AND DISPLAY THE VACATION COST BY UNCOMMENTING THE CODE
 
+    v2.displayCost();
 
-// as shown in the sample output below
+    break;
 
+  }
 
-// Enter either 2 or 3 to check those test cases -1 to check neither
+  case 4: {
 
+    cout << "Second Specific Vacation: " << endl;
 
-// To check the default constructor please enter 3 for the qualified enter 4
+    string pDestination;
 
+    int pCost;
 
-int testCaseCheck;
+    // Taking in the destination and cost parameters
 
+    cout << "Enter parameterized vacation destination and cost: ";
 
-cout << "Please enter test case number: ";
+    cin >> pDestination >> pCost;
 
+    // AFTER MAKING YOUR PARAMETERIZED CONSTRUCTOR INITIALIZE A PARAMETERIZED VACATION
 
-cin >> testCaseCheck;
+    // NAME THIS VACATION v3
 
+    Vacation v3(pDestination, pCost);
 
-switch (testCaseCheck) {
+    // ***INSERT INITIALIZED PARAMETERIZED VACATION HERE***
 
+    // Display v3 information using displayCost
 
-case 2: {
+    // UNCOMMENT BELOW CODE TO DISPLAY v3 INFORMATION USING displayCost
 
+    v3.displayCost();
 
-// UNCOMMENT THE CODE BELOW WHEN YOU START PART 2
+    break;
 
+  }
 
-v1.displayCost();
+  default:
 
+    break;
 
-break;
+  }
 
+  return 0;
 
 }
-
-
-case 3: {
-
-
-cout << "Second General Vacation: " << endl;
-
-
-Vacation v2;
-
-
-// AFTER MAKING YOUR DEFAULT CONSTRUCTOR INITIALIZE A DEFAULT VACATION
-
-
-// NAME THIS VACATION v2 AND DISPLAY THE VACATION COST BY UNCOMMENTING THE CODE
-
-
-v2.displayCost();
-
-
-break;
-
-
-}
-
-
-case 4: {
-
-
-cout << "Second Specific Vacation: " << endl;
-
-
-string pDestination;
-
-
-int pCost;
-
-
-// Taking in the destination and cost parameters
-
-
-cout << "Enter parameterized vacation destination and cost: ";
-
-
-cin >> pDestination >> pCost;
-
-
-// AFTER MAKING YOUR PARAMETERIZED CONSTRUCTOR INITIALIZE A PARAMETERIZED VACATION
-
-
-// NAME THIS VACATION v3
-
-
-Vacation v3(pDestination,pCost);
-
-
-// ***INSERT INITIALIZED PARAMETERIZED VACATION HERE***
-
-
-// Display v3 information using displayCost
-
-
-// UNCOMMENT BELOW CODE TO DISPLAY v3 INFORMATION USING displayCost
-
-
-v3.displayCost();
-
-
-break;
-
-
-}
-
-
-default:
-
-
-break;
-
-
-}
-
-
-return 0;
-
-
-}
-
