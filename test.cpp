@@ -54,11 +54,11 @@ long double distance(long double lat1, long double long1, long double lat2, long
     long double dlong = long2 - long1;
     long double dlat = lat2 - lat1;
 
-    long double ans = pow(sin(dlat / 2), 2) +
+    long double res = pow(sin(dlat / 2), 2) +
         cos(lat1) * cos(lat2) *
         pow(sin(dlong / 2), 2);
 
-    ans = 2 * asin(sqrt(ans));
+    res = 2 * asin(sqrt(res));
 
     // Radius of Earth in
     // Kilometers, R = 6371
@@ -66,23 +66,23 @@ long double distance(long double lat1, long double long1, long double lat2, long
     long double R = 3956;
 
     // Calculate the result
-    ans = ans * R;
+    res = res * R;
 
-    return ans;
+    return res;
 }
 
 vector<string> parseCsvString(string x) {
     string temp = "";
-    vector<string> ans;
+    vector<string> res;
     for(int i=0; i<(int)x.size(); i++){
         if(x[i] != ',') temp += x[i];
         else {
-            ans.push_back(temp);
+            res.push_back(temp);
             temp = "";
         }
     }
-    ans.push_back(temp);
-    return ans;
+    res.push_back(temp);
+    return res;
 }
 
 Ride getNewRide(string x) {
@@ -152,22 +152,22 @@ void casualMemberRiderPercentage(vector<Ride> cleanRides) {
         else member++;
     }
 
-    double casualPerc = ((casual*1.0)/cleanRides.size()) * 100.0;
-    double memberPerc = ((member*1.0)/cleanRides.size()) * 100.0;
+    double casualPercent = ((casual*1.0)/cleanRides.size()) * 100.0;
+    double memberPercent = ((member*1.0)/cleanRides.size()) * 100.0;
     cout << "   Casual Rider Percentage: ";
-    printf("%.1f", casualPerc);
+    printf("%.1f", casualPercent);
     cout << "%" << endl;
     cout << "   Member Rider Percentage: ";
-    printf("%.1f", memberPerc);
+    printf("%.1f", memberPercent);
     cout << "%" << endl;
     cout << endl;
 }
 
-void closestStation(vector<Ride> cleanRides, long double lat, long double lng) {
+void nearestStation(vector<Ride> cleanRides, long double lat, long double lng) {
 
     long double closestmiles = INT_MAX;
-    pair<long double, long double> closestlatlng;
-    string closestStation;
+    pair<long double, long double> nearestlatlng;
+    string nearestStation;
 
     for (int i = 0 ; i < (int) cleanRides.size(); i++) {
         long double dist = distance(lat, lng, cleanRides[i].startlatlng.first, cleanRides[i].startlatlng.second);
@@ -175,21 +175,21 @@ void closestStation(vector<Ride> cleanRides, long double lat, long double lng) {
         cout << lat << " " << lng << " " << cleanRides[i].startlatlng.first << " " << cleanRides[i].startlatlng.second << " " << dist << endl;
         if (dist < closestmiles) {
             closestmiles = dist;
-            closestlatlng = {cleanRides[i].startlatlng.first, cleanRides[i].startlatlng.second};
-            closestStation = cleanRides[i].start_station_name;
+            nearestlatlng = {cleanRides[i].startlatlng.first, cleanRides[i].startlatlng.second};
+            nearestStation = cleanRides[i].start_station_name;
         }
         dist = distance(lat, lng, cleanRides[i].endlatlng.first, cleanRides[i].endlatlng.second);
         
         cout << lat << " " << lng << " " << cleanRides[i].endlatlng.first << " " << cleanRides[i].endlatlng.second << " " << dist << endl;
         if (dist < closestmiles) {
             closestmiles = dist;
-            closestlatlng = {cleanRides[i].endlatlng.first, cleanRides[i].endlatlng.second};
-            closestStation = cleanRides[i].end_station_name;
+            nearestlatlng = {cleanRides[i].endlatlng.first, cleanRides[i].endlatlng.second};
+            nearestStation = cleanRides[i].end_station_name;
         }
     }
 
-    cout << "   Closest Divvy station is: " << closestStation << " at ";
-    cout << closestlatlng.first << ", " << closestlatlng.second << ", ";
+    cout << "   Closest Divvy station is: " << nearestStation << " at ";
+    cout << nearestlatlng.first << ", " << nearestlatlng.second << ", ";
     cout << closestmiles << "miles away." << endl << endl;
 }
 
@@ -218,6 +218,7 @@ void calculationPerHour(vector<Ride> cleanRides, int choice) {
             largestHour = max (largestHour, weekend[hour]);
         }
     }
+
     
     if (choice == 1) {
         cout << "   LargestNumberOfRides is: " << largestHour << endl ;
@@ -358,7 +359,7 @@ int main() {
                 long double lat, lng;
                 cin >> lat >> lng;
                 cout << "   You entered: " << floor(lat * 10)/10.0 << " for latitude and " << floor(lng * 10)/10.0 << " for longitude" << endl;
-                closestStation(cleanRides, lat, lng);
+                nearestStation(cleanRides, lat, lng);
                 break;
                 
             case 6:
@@ -394,7 +395,7 @@ int main() {
             long double lat, lng;
             cin >> lat >> lng;
             cout << "   You entered: " << floor(lat * 10)/10.0 << " for latitude and " << floor(lng * 10)/10.0 << " for longitude" << endl;
-            closestStation(cleanRides, lat, lng);
+            nearestStation(cleanRides, lat, lng);
         }
 
         if (choice == 6) {
