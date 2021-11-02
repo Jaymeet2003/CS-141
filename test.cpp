@@ -302,6 +302,74 @@ int main() {
             cout << "   Total # of trips found in datafile:  " << count << endl;
             cout << "   Total # of trips in clean data:  " << cleanRides.size() << endl;
         }
+        
+        /*
+        switch(choice){
+            case 1:
+                firstTime = false;
+                cout << "   Select datafile: " << endl;
+                cout << "      1. Small subset of data with 14 rides to help create your program" << endl;
+                cout << "      2. Week day vs weekend rides" << endl;
+                cout << "      3. All September 2021 data (not tested in Zybooks)" << endl;
+                cout << "   Your selection--> ";
+                cin >> innerChoice;
+                string filename;
+
+                if (innerChoice == 1) filename = "divvyridesampledata.csv";
+                else if (innerChoice == 2) filename = "weekdayweekend.csv";
+                else filename = "all_divvy_rides_september.csv";
+
+                string text;
+                ifstream datafile(filename);
+                getline (datafile, text);   
+
+                int count = 0;
+                while (getline (datafile, text)) {
+                    count++;
+                    Ride newRide  = getNewRide(text);
+                    if (newRide.id != "")  {
+                        cleanRides.push_back(newRide);
+                    }
+                }
+                datafile.close();
+                cout << "   Total # of trips found in datafile:  " << count << endl;
+                cout << "   Total # of trips in clean data:  " << cleanRides.size() << endl;
+                break;
+             
+            case 2:
+                 displayOverAllTripInformation(cleanRides);
+                 break;
+                 
+            case 3:
+                casualMemberRiderPercentage(cleanRides);
+                break;
+                
+            case 4:
+                cout << "   Select type of display:";
+                cout << "      1. Counts of rides per hour in the day" << endl;
+                cout << "      2. Proportional 50 column graph with @ for weekday and + for weekend" << endl;
+                cout << "   Your selection--> ";
+                cin >> innerChoice;
+                calculationPerHour(cleanRides, innerChoice);
+                break;
+                
+            case 5:
+                cout << "   Input latitude and longitude of the home: ";
+                long double lat, lng;
+                cin >> lat >> lng;
+                cout << "   You entered: " << floor(lat * 10)/10.0 << " for latitude and " << floor(lng * 10)/10.0 << " for longitude" << endl;
+                closestStation(cleanRides, lat, lng);
+                break;
+                
+            case 6:
+                return 0;
+                break;
+             
+            default:
+                cout<<"Invalid Choice"<<endl;
+                exit();
+        
+        */
 
         if (choice == 2) {
             displayOverAllTripInformation(cleanRides);
