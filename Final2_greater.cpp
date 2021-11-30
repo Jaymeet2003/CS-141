@@ -30,7 +30,7 @@ void displayList(Node *head)
 {
         Node *temp=head;
         while(temp->pNext!=NULL){
-                printf("%d->",temp->data); 
+                printf("%d ",temp->data); 
                 temp=temp->pNext;    
         }
         printf("%d\n",temp->data); 
@@ -86,14 +86,21 @@ int main(){
         Node *pHeadA = NULL; 
         Node *pHeadB = NULL; 
         Node *head=NULL;
-        int data[]={2,8,5,11,3,9,6};
-        int length=sizeof(data)/sizeof(data[0]);
-        for(int i=0;i<length;i++){
-            insert(&pHead,data[i]);
+        
+        cout << "Enter list numbers separated by space, followed by -1:";
+
+        while (true)
+        {       
+                int data;
+                cin >> data;
+                if(data == -1) break;
+                insert(&pHead, data);
         }
+        
+        cout<<"The List is:";
         displayList(pHead);
         int userInput;
-        cout << "\nEnter value: ";
+        cout << "\nEnter boundary number: ";
         cin >> userInput;
         lessGreaterLists( pHead, userInput, pHeadA, pHeadB);
         displayList(pHeadA);
