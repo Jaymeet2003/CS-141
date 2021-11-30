@@ -38,7 +38,7 @@ void displayList(Node *head)
 }
 
 
-void lessGreaterLists( Node *pOriginal,int d, Node *&pHeadLess, Node *&pHeadGreater){
+void lessGreaterLists( Node *pOriginal,int userInput, Node *&pHeadLess, Node *&pHeadGreater){
         Node *temp=pOriginal; 
         /*while original list is not empty*/
         while(temp!=NULL){
@@ -47,7 +47,7 @@ void lessGreaterLists( Node *pOriginal,int d, Node *&pHeadLess, Node *&pHeadGrea
                 newdata->pNext=NULL;
                 newdata->data=temp->data;
                 /*if  data is less than user input attached this node to lesser list */
-                if(temp->data<d){
+                if(temp->data<userInput){
                         /*if less list is null make a new data head of pheadLess*/
                         if(pHeadLess==NULL){
                                 pHeadLess=newdata;
@@ -62,7 +62,7 @@ void lessGreaterLists( Node *pOriginal,int d, Node *&pHeadLess, Node *&pHeadGrea
                                 tmp->pNext=newdata;  
                         }                       
                 }
-                else if (temp->data>d){
+                else if (temp->data>userInput){
                         if(pHeadGreater==NULL){
                                 pHeadGreater=newdata;
                         }
