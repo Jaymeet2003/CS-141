@@ -26,15 +26,12 @@ void *insert(Node **head,int userInput){
 
 
 
-void displayList(Node *head)
-{
-        Node *temp=head;
-        while(temp->pNext!=NULL){
-                printf("%d->",temp->data); 
-                temp=temp->pNext;    
-        }
-        printf("%d\n",temp->data); 
-        
+void display(Node * pHead) {
+  while (pHead != NULL) {
+    cout << pHead -> data << " ";
+    pHead = pHead -> pNext;
+  }
+  cout << endl;
 }
 
 
@@ -52,6 +49,8 @@ void evenOddSum( Node *&pHead, int &evenSum, int &oddSum)
           
        curr = curr->pNext;
    }
+   
+   cout << "Even and odd sums are:"<< evenSum <<" "<<oddSum;
 }
 
 int main(){
@@ -60,11 +59,23 @@ int main(){
         Node *pHeadA = NULL; 
         Node *pHeadB = NULL; 
         Node *head=NULL;
-        int data[]={2,8,5,11,3,9,6};
-        int length=sizeof(data)/sizeof(data[0]);
-        for(int i=0;i<length;i++){
-            insert(&pHead,data[i]);
+
+        int evenSum,oddSum;
+        cout << "Enter list numbers separated by space, followed by -1:";
+
+        while (true)
+        {       
+                int data;
+                cin >> data;
+                if(data == -1) break;
+                insert(&pHead, data);
         }
+        
+        cout<<"The List is:";
+        display(pHead);
+
+
         evenOddSum( pHead, evenSum, oddSum);
+        
         return 0;
 }
