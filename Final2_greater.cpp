@@ -30,7 +30,7 @@ void displayList(Node *head)
 {
         Node *temp=head;
         while(temp->pNext!=NULL){
-                printf("%d->",temp->data); 
+                printf("%d ",temp->data); 
                 temp=temp->pNext;    
         }
         printf("%d\n",temp->data); 
@@ -38,7 +38,7 @@ void displayList(Node *head)
 }
 
 
-void lessGreaterLists( Node *pOriginal,int userInput, Node *&pHeadLess, Node *&pHeadGreater){
+void lessGreaterLists( Node *pOriginal,int d, Node *&pHeadLess, Node *&pHeadGreater){
         Node *temp=pOriginal; 
         /*while original list is not empty*/
         while(temp!=NULL){
@@ -47,7 +47,7 @@ void lessGreaterLists( Node *pOriginal,int userInput, Node *&pHeadLess, Node *&p
                 newdata->pNext=NULL;
                 newdata->data=temp->data;
                 /*if  data is less than user input attached this node to lesser list */
-                if(temp->data<userInput){
+                if(temp->data<d){
                         /*if less list is null make a new data head of pheadLess*/
                         if(pHeadLess==NULL){
                                 pHeadLess=newdata;
@@ -62,7 +62,7 @@ void lessGreaterLists( Node *pOriginal,int userInput, Node *&pHeadLess, Node *&p
                                 tmp->pNext=newdata;  
                         }                       
                 }
-                else if (temp->data>userInput){
+                else if (temp->data>d){
                         if(pHeadGreater==NULL){
                                 pHeadGreater=newdata;
                         }
@@ -86,14 +86,21 @@ int main(){
         Node *pHeadA = NULL; 
         Node *pHeadB = NULL; 
         Node *head=NULL;
-        int data[]={2,8,5,11,3,9,6};
-        int length=sizeof(data)/sizeof(data[0]);
-        for(int i=0;i<length;i++){
-            insert(&pHead,data[i]);
+        
+        cout << "Enter list numbers separated by space, followed by -1:";
+
+        while (true)
+        {       
+                int data;
+                cin >> data;
+                if(data == -1) break;
+                insert(&pHead, data);
         }
+        
+        cout<<"The List is:";
         displayList(pHead);
         int userInput;
-        cout << "\nEnter value: ";
+        cout << "\nEnter boundary number: ";
         cin >> userInput;
         lessGreaterLists( pHead, userInput, pHeadA, pHeadB);
         displayList(pHeadA);
